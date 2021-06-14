@@ -44,9 +44,9 @@ void dump(uint32_t *v) {
 int main(int argc, char *argv[]) {
 	uint32_t v[2] = { 0u, 0u };
 	uint32_t key[4] = { 0u, 0u, 0u, 0u };
-	char *data, d;
-	unsigned int j, k;
-	unsigned int len, len8;
+	uint8_t *data, d;
+	size_t j, k;
+	size_t len, len8;
 	int endian;
 	
 	endian = (0x12345678u != htonl(0x12345678u));
@@ -56,9 +56,9 @@ int main(int argc, char *argv[]) {
 		sscanf(argv[2], "%x", &key[1]);
 		sscanf(argv[3], "%x", &key[2]);
 		sscanf(argv[4], "%x", &key[3]);
-		data = argv[5];
+		data = (uint8_t *)argv[5];
 	} else if (argc == 2) {
-		data = argv[1];
+		data = (uint8_t *)argv[1];
 	} else exit(1);
 	
 	len = strlen(data);
