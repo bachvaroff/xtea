@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 	fflush(stderr);
 	
 	fflush(stdout);
-	for (TERM = 0; !TERM; ) {
+	for (TERM = 0; !TERM; ) { /* PCBC */
 		dv[0] = dv[1] = 0u;
 		for (j = 0; j < 8; j++) {
 			id = fgetc(stdin);

@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
 	fflush(stderr);
 	
 	fflush(stdout);
-	while (1) {
+	while (1) { /* PCBC */
 		if (fscanf(stdin, "%x", &ev[0]) != 1) break;
 		if (fscanf(stdin, "%x", &ev[1]) != 1) break;
 		
