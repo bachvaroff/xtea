@@ -28,15 +28,19 @@ void dump(uint32_t *v) {
 	uint32_t vv;
 	unsigned char t;
 	int j, k;
-
+	
+	fflush(stdout);
 	for (j = 0; j < 2; j++) {
 		vv = htonl(v[j]);
 		for (k = 0; k < 4; k++) {
 			t = ((unsigned char *)&vv)[k];
-				printf("%c%c", hex[(t & 0xf0u) >> 4u], hex[t & 0x0fu]);
+			fputc(hex[(t & 0xf0u) >> 4u], stdout);
+			fputc(hex[t & 0x0fu], stdout);
 		}
-		printf("\n");
+		fputc(' ', stdout);
 	}
+	fputc('\n', stdout);
+	fflush(stdout);
 	
 	return;
 }

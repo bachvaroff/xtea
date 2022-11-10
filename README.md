@@ -1,86 +1,55 @@
 nasko@midian:~/git/github/xtea$ ./keygen.sh 
-0 7ff23365 f4d410f9 12f85146 fb0a559e 
-1 672c6df5 882a4957 2918ae83 eba2dc19 
-2 44de2502 a796da8f 7b4d9d2a 03683ef4 
-3 6d1f6b93 5e0bae3e 69477d70 a5e6eb73 
-4 77907d2c dae11bc4 9fcff7be d0eb0876 
-5 cd288945 3d5ef0a1 34d8972e 379e1bf8 
-6 9eca2e26 c06761b6 020da9c9 a18cadd5 
-7 081e1b5e 790a101d cc896da1 a9470ac9 
-8 266245d6 8a279f41 5cc851a0 7e71a1c7 
-9 8094a46a a0f72509 e96a6c5c 9999747b 
-10 2efd277c 3b8795c0 3bd307e8 6b55f8e2 
-11 f8a95c01 e851c943 7ef7cbb4 81f24e31 
-12 4d048e60 ca8b5743 1c3eece3 73228a7b 
-13 d64e573c c762cd82 2cb4a336 510d3c91 
-14 8801b4f3 ed84fe49 211a2be8 71cdb276 
-15 c5f3fd14 05238dc9 eca36756 4104139f 
-nasko@midian:~/git/github/xtea$ echo 'проф. дохтор Чавдарлийска, дърта курва от ЦУ; доц. дохтор Бирен, СУ, вече пукнал; мангал-манаф (по библейски) Познатов, обикновен педераст' | ./xtea_encode 7ff23365 f4d410f9 12f85146 fb0a559e | tee out
+0 d04a1f71 52fe5b05 10bced39 f434cbda 
+1 66194376 c33ec5d4 f9b0d795 ea70ef8f 
+2 424a2928 1d40f541 f58ca731 8c15d8c4 
+3 86c79158 f9fc9ddf 04f1f8ff 2d02c1f8 
+4 5074d516 b8551a6f fb0df788 b629cd05 
+5 c9e95180 a9fe934b eca166e6 6c62e77c 
+6 beb09e3b 855afcf5 dc4b27d7 6397d4a3 
+7 5726381c 5c175e31 ff7b45fa 7cc85537 
+8 f9968656 bae4768f dd1c712e 66271d05 
+9 fd2f06ff cf4af2d0 88580b4e e34ed7f0 
+10 c25a65db 88830135 e0940c56 3b38d620 
+11 4ee88df1 a0ea57ca 87641057 be446f30 
+12 09815aa1 d7a59ba4 fb022b3e 84a17e47 
+13 26777bb2 080ec301 aed8a490 4e4df850 
+14 4a679770 6a01bde6 7568158f 2a5019bb 
+15 0b00cebb a8b74c2c 6656db7d cbdb8202 
+nasko@midian:~/git/github/xtea$ echo 'проф. дохтор Чавдарлийска, дърта курва от ЦУ; доц. дохтор Бирен, СУ, вече пукнал; мангал-манаф (по библейски) Познатов, обикновен педераст' | ./xtea_encode d04a1f71 52fe5b05 10bced39 f434cbda | tee out
 -------- ENCODE BEGIN stderr --------
 -------- ENCODE END stderr --------
-49db1971
-353b1443
-9d263a10
-92bd91c0
-94738f95
-ad08955a
-e6aacf44
-45ddb7e8
-edfa0cb9
-1bf73553
-d18ebe52
-be672eb0
-c79a03a0
-5e6b79ab
-700dca8c
-9cf37963
-cc840241
-f0da2f85
-b36349ab
-3fa15b0b
-53749e52
-5ea4080e
-9d263a10
-92bd91c0
-94738f95
-ad08955a
-f365ecff
-b6f4cd91
-f7b1a89b
-d1df9992
-c0fde1fd
-8d2d205f
-ec9f38f2
-f997c585
-a1209b22
-e828037e
-5d196364
-edef17a7
-408e235f
-46c1892f
-7ad03f99
-f2625fb8
-a8762e33
-d30e580c
-370fe204
-ed6365be
-7f4c21ed
-961126fd
-8f3eba1d
-0d159cf6
-4b249f01
-32cd4bcf
-27fa86e3
-7675eb5c
-d2c2544f
-1c4f2ff1
-16cf33e3
-dda59b6a
-94cc5c8e
-4fa1925d
-3c4c95dd
-2da6d516
-nasko@midian:~/git/github/xtea$ ./xtea_decode 7ff23365 f4d410f9 12f85146 fb0a559e < out
+bdcc39e6 a4fb2bf7 
+163f9d78 f0550a63 
+795048be 5c26be25 
+d4e5ddfc f441a918 
+048ffdd9 8232267f 
+ef009544 0b2c80dc 
+47f0745b 2f0b1ef9 
+38f307f5 f6fde332 
+b095ac33 52c65ad0 
+05446cdb 7c5fa109 
+311ef8cd b0c7cf5a 
+163f9d78 f0550a63 
+795048be 5c26be25 
+7aef9373 8efe412c 
+65848a60 deb9af77 
+f71229db e8d536e7 
+5f88c103 f89ec44f 
+f6de721a e5d4f91f 
+281c4fb3 547d0d43 
+64fcf6d4 7103fc31 
+26983c89 17416261 
+729b9a59 c13aec74 
+cb759a1a 252e57c8 
+616a2c24 9ddfad56 
+aed97691 4369a958 
+92cc4a31 3b223d05 
+e8212261 717b0eec 
+c0e95030 4c45bc06 
+6ca1b9b0 708b39cf 
+e32010a2 20359c47 
+555ee466 7c245dcb 
+nasko@midian:~/git/github/xtea$ ./xtea_decode d04a1f71 52fe5b05 10bced39 f434cbda < out
 -------- DECODE BEGIN stderr --------
 проф. дохтор Чавдарлийска, дърта курва от ЦУ; доц. дохтор Бирен, СУ, вече пукнал; мангал-манаф (по библейски) Познатов, обикновен педераст
 
