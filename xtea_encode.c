@@ -46,30 +46,40 @@ void dump(uint32_t *v) {
 }
 
 int main(int argc, char *argv[]) {
-	uint32_t v[2] = { 0u, 0u };
+	uint32_t iv[2] = { 0u, 0u };
 	uint32_t key[4] = { 0u, 0u, 0u, 0u };
-	int endian, TERM;
+	uint32_t dv[2], ev[2];
+	int endian;
+	int TERM;
 	int j, id;
 	uint8_t d;
 	
 	endian = (0x01234567u != htonl(0x01234567u));
 	
-	if (argc == 5) {
-		sscanf(argv[1], "%x", &key[0]);
-		sscanf(argv[2], "%x", &key[1]);
-		sscanf(argv[3], "%x", &key[2]);
-		sscanf(argv[4], "%x", &key[3]);
+	if (argc == 7) {
+		sscanf(argv[1], "%x", &iv[0]);
+		sscanf(argv[2], "%x", &iv[1]);
+		sscanf(argv[3], "%x", &key[0]);
+		sscanf(argv[4], "%x", &key[1]);
+		sscanf(argv[5], "%x", &key[2]);
+		sscanf(argv[6], "%x", &key[3]);
 	}
 	
-	if (!endian)
-		for (j = 0; j < 4; j++)
-			key[j] = htonl(key[j]);
+	if (!endian) {
+		iv[0] = htonl(iv[0]);
+		iv[1] = htonl(iv[1]);
+		key[0] = htonl(key[0]);
+		key[1] = htonl(key[1]);
+		key[2] = htonl(key[2]);
+		key[3] = htonl(key[3]);
+	}
 	
 	fprintf(stderr, "-------- ENCODE BEGIN stderr --------\n");
 	fflush(stderr);
 	
 	fflush(stdout);
-	for (TERM = 0; !TERM; )
+	for (TERM = 0; !TERM; ) {
+		dv[0] = dv[1] = 0u;
 		for (j = 0; j < 8; j++) {
 			id = fgetc(stdin);
 			if (id != EOF) d = (uint8_t)id;
@@ -79,19 +89,23 @@ int main(int argc, char *argv[]) {
 				if (!j) break;
 			}
 			
-			if (j < 4) v[0] |= d << (j << 3);
-			else v[1] |= d << ((j - 4) << 3);
+			if (j < 4) dv[0] |= d << (j << 3);
+			else dv[1] |= d << ((j - 4) << 3);
 			
 			if (j == 7) {
 				if (!endian) {
-					v[0] = htonl(v[0]);
-					v[1] = htonl(v[1]);
+					dv[0] = htonl(dv[0]);
+					dv[1] = htonl(dv[1]);
 				}
-				encipher(256u, v, key);
-				dump(v);
-				v[0] = v[1] = 0u;
+				ev[0] = iv[0] ^ dv[0];
+				ev[1] = iv[1] ^ dv[1];
+				encipher(256u, ev, key);
+				iv[0] = ev[0] ^ dv[0];
+				iv[1] = ev[1] ^ dv[1];
+				dump(ev);
 			}
 		}
+	}
 	fflush(stdout);
 	
 	fprintf(stderr, "-------- ENCODE END stderr --------\n");
@@ -99,4 +113,3 @@ int main(int argc, char *argv[]) {
 	
 	return 0;
 }
-
