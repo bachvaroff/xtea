@@ -42,5 +42,18 @@ nasko@midian:~/git/github/xtea$ ./xtea_decode 65cf8dae 9a042ce7 2058d858 b53550a
 
 -------- NEW LINE stderr --------
 -------- DECODE END stderr --------
-nasko@midian:~/git/github/xtea$ 
+nasko@midian:~/git/github/xtea$ grep -e '^[17] ' keys
+1 283c67bd 27efa820 37359cea 6a2c2324 
+7 d2176ff9 48f5a3d3 2448a9a2 99e93d81 
+nasko@midian:~/git/github/xtea$ base64 < /bin/ls | ./xtea_encode 283c67bd 27efa820 d2176ff9 48f5a3d3 2448a9a2 99e93d81 | ./xtea_decode 283c67bd 27efa820 d2176ff9 48f5a3d3 2448a9a2 99e93d81 | base64 -di > ls
+-------- DECODE BEGIN stderr --------
+-------- ENCODE BEGIN stderr --------
+-------- ENCODE END stderr --------
 
+-------- NEW LINE stderr --------
+-------- DECODE END stderr --------
+nasko@midian:~/git/github/xtea$ md5sum /bin/ls
+586256cbd58140ec8c3b2c910cf80c27  /bin/ls
+nasko@midian:~/git/github/xtea$ md5sum ./ls
+586256cbd58140ec8c3b2c910cf80c27  ./ls
+nasko@midian:~/git/github/xtea$ 
