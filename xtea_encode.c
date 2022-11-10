@@ -44,53 +44,50 @@ void dump(uint32_t *v) {
 int main(int argc, char *argv[]) {
 	uint32_t v[2] = { 0u, 0u };
 	uint32_t key[4] = { 0u, 0u, 0u, 0u };
-	uint8_t *data, d;
-	size_t j, k;
-	size_t len, len8;
-	int endian;
+	int endian, TERM;
+	int j, id;
+	uint8_t d;
 	
-	endian = (0x12345678u != htonl(0x12345678u));
+	endian = (0x01234567u != htonl(0x01234567u));
 	
-	if (argc == 6) {
+	if (argc == 5) {
 		sscanf(argv[1], "%x", &key[0]);
 		sscanf(argv[2], "%x", &key[1]);
 		sscanf(argv[3], "%x", &key[2]);
 		sscanf(argv[4], "%x", &key[3]);
-		data = (uint8_t *)argv[5];
-	} else if (argc == 2) {
-		data = (uint8_t *)argv[1];
-	} else exit(1);
-	
-	len = strlen(data);
-	len8 = (len | 7u) + 1u;
+	}
 	
 	if (!endian)
-		for (j = 0u; j < 4u; j++)
+		for (j = 0; j < 4; j++)
 			key[j] = htonl(key[j]);
 	
 	fprintf(stderr, "-------- ENCODE BEGIN stderr --------\n");
 	fflush(stderr);
 	
 	fflush(stdout);
-	for (j = 0u; j < len8; j++) {
-		if (j < len) d = data[j];
-		else d = '\0';
-		
-		k = j & 7u;
-		
-		if (k < 4u) v[0] |= d << (k << 3u);
-		else v[1] |= d << ((k - 4u) << 3u);
-		
-		if (k == 7u) {
-			if (!endian) {
-				v[0] = htonl(v[0]);
-				v[1] = htonl(v[1]);
+	for (TERM = 0; !TERM; )
+		for (j = 0; j < 8; j++) {
+			id = fgetc(stdin);
+			if (id != EOF) d = (uint8_t)id;
+			else {
+				d = 0u;
+				TERM = 1;
+				if (!j) break;
 			}
-			encipher(256u, v, key);
-			dump(v);
-			v[0] = v[1] = 0u;
+			
+			if (j < 4) v[0] |= d << (j << 3);
+			else v[1] |= d << ((j - 4) << 3);
+			
+			if (j == 7) {
+				if (!endian) {
+					v[0] = htonl(v[0]);
+					v[1] = htonl(v[1]);
+				}
+				encipher(256u, v, key);
+				dump(v);
+				v[0] = v[1] = 0u;
+			}
 		}
-	}
 	fflush(stdout);
 	
 	fprintf(stderr, "-------- ENCODE END stderr --------\n");

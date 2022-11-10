@@ -22,15 +22,12 @@ void decipher(unsigned int num_rounds, uint32_t *v, uint32_t *key) {
 
 void print(uint32_t *v) {
 	uint32_t vv;
-	unsigned char t;
 	int j, k;
-
+	
 	for (j = 0; j < 2; j++) {
 		vv = htonl(v[j]);
-		for (k = 0; k < 4; k++) {
-			t = ((unsigned char *)&vv)[3 - k];
-			if (t) printf("%c", t);
-		}
+		for (k = 0; k < 4; k++)
+			fputc(((unsigned char *)&vv)[3 - k], stdout);
 	}
 	
 	return;
@@ -41,15 +38,14 @@ int main(int argc, char *argv[]) {
 	uint32_t key[4] = { 0u, 0u, 0u, 0u };
 	int endian, j;
 	
-	endian = (0x12345678u != htonl(0x12345678u));
+	endian = (0x01234567u != htonl(0x01234567u));
 	
-	if (argc < 5) exit(1);
-	if ((argc - 1) % 2) exit(1);
-	
-	sscanf(argv[1], "%x", &key[0]);
-	sscanf(argv[2], "%x", &key[1]);
-	sscanf(argv[3], "%x", &key[2]);
-	sscanf(argv[4], "%x", &key[3]);
+	if (argc == 5) {
+		sscanf(argv[1], "%x", &key[0]);
+		sscanf(argv[2], "%x", &key[1]);
+		sscanf(argv[3], "%x", &key[2]);
+		sscanf(argv[4], "%x", &key[3]);
+	}
 	
 	if (!endian)
 		for (j = 0; j < 4; j++)
@@ -59,9 +55,9 @@ int main(int argc, char *argv[]) {
 	fflush(stderr);
 	
 	fflush(stdout);
-	for (j = 5; j < argc; j += 2) {
-		sscanf(argv[j], "%x", &v[0]);
-		sscanf(argv[j + 1], "%x", &v[1]);
+	while (1) {
+		if (fscanf(stdin, "%x", &v[0]) != 1) break;
+		if (fscanf(stdin, "%x", &v[1]) != 1) break;
 		
 		if (!endian) {
 			v[0] = htonl(v[0]);

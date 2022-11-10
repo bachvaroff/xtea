@@ -1,82 +1,89 @@
-nasko@midian:~/var/git/xtea$ ./keygen.sh
-0 6832bc73 dd75fafa e2a235c0 4acea96f 
-1 ee0a5215 2e0b127f d7663436 a2a19669 
-2 d7865799 74bc6e12 81b37831 2538e569 
-3 232902d9 8a79b529 b2c71e3e cfe9e99b 
-4 2eedfb34 c018059b 83e8433c 4edd295d 
-5 e3ee703e aeea1e82 58e90177 e6db2241 
-6 c9b0f24f 82205acf 50bd9a21 c6825dde 
-7 681b2087 17d92da3 37f29c26 e167af3b 
-8 3933adfa 271c1c97 920e25f6 260d3f83 
-9 f02b05ce f68b60ec ae054d00 20722795 
-10 425bdc5c b6aa9092 cd3d86a8 118910b7 
-11 29ddc308 55593789 4b451117 758068b9 
-12 33bb650a b40e78dd e14b024e 0a8620cc 
-13 d08a47ac 8016602a 996fba2d f84a7b68 
-14 3de1470e bd395bec 49847671 b126772e 
-15 227414e6 56fae512 5156c12b b241b4b7 
-nasko@midian:~/var/git/xtea$ ./xtea_encode 6832bc73 dd75fafa e2a235c0 4acea96f 'проф. дохтор Чавдарова, дърта курва от СУ; доц. дохтор Биров, СУ, вече пукнал; циганин-манаф Познаков, обикновен педераст'
+nasko@midian:~/git/github/xtea$ ./keygen.sh 
+0 7ff23365 f4d410f9 12f85146 fb0a559e 
+1 672c6df5 882a4957 2918ae83 eba2dc19 
+2 44de2502 a796da8f 7b4d9d2a 03683ef4 
+3 6d1f6b93 5e0bae3e 69477d70 a5e6eb73 
+4 77907d2c dae11bc4 9fcff7be d0eb0876 
+5 cd288945 3d5ef0a1 34d8972e 379e1bf8 
+6 9eca2e26 c06761b6 020da9c9 a18cadd5 
+7 081e1b5e 790a101d cc896da1 a9470ac9 
+8 266245d6 8a279f41 5cc851a0 7e71a1c7 
+9 8094a46a a0f72509 e96a6c5c 9999747b 
+10 2efd277c 3b8795c0 3bd307e8 6b55f8e2 
+11 f8a95c01 e851c943 7ef7cbb4 81f24e31 
+12 4d048e60 ca8b5743 1c3eece3 73228a7b 
+13 d64e573c c762cd82 2cb4a336 510d3c91 
+14 8801b4f3 ed84fe49 211a2be8 71cdb276 
+15 c5f3fd14 05238dc9 eca36756 4104139f 
+nasko@midian:~/git/github/xtea$ echo 'проф. дохтор Чавдарлийска, дърта курва от ЦУ; доц. дохтор Бирен, СУ, вече пукнал; мангал-манаф (по библейски) Познатов, обикновен педераст' | ./xtea_encode 7ff23365 f4d410f9 12f85146 fb0a559e | tee out
 -------- ENCODE BEGIN stderr --------
-f3016a68
-011c77bb
-75883bf1
-13031c93
-0858a029
-27d2701e
-aa19c241
-690f1dae
-634d5d86
-9f6ac2d8
-39370232
-9d7e559f
-1a400b7b
-7d718c4d
-3e8bde85
-4d171dd2
-1433f085
-8a26a355
-7ca152b7
-e31ea7e5
-938784d2
-b532fdb6
-d07ff51e
-5c7f6f1e
-1cbf370c
-8d598275
-90288c35
-75154207
-e6fae70b
-7dff0dd2
-e56cfb2e
-a93d879c
-9d5d13dc
-9ee85bb2
-39af033b
-21f8f84b
-9da4521e
-311d54ad
-51fd8cf8
-4c952cd2
-128e80d9
-33215c71
-0ab75140
-f7306c5b
-0585f4fa
-50480223
-a2a496f5
-9b4a9a23
-4d1e139a
-80425fa6
-a143ddbf
-534ed1a6
-e4e136cf
-e3fe75a6
-c01eb5f1
-d9e7fb21
 -------- ENCODE END stderr --------
-nasko@midian:~/var/git/xtea$ ./xtea_decode 6832bc73 dd75fafa e2a235c0 4acea96f f3016a68 011c77bb 75883bf1 13031c93 0858a029 27d2701e aa19c241 690f1dae 634d5d86 9f6ac2d8 39370232 9d7e559f 1a400b7b 7d718c4d 3e8bde85 4d171dd2 1433f085 8a26a355 7ca152b7 e31ea7e5 938784d2 b532fdb6 d07ff51e 5c7f6f1e 1cbf370c 8d598275 90288c35 75154207 e6fae70b 7dff0dd2 e56cfb2e a93d879c 9d5d13dc 9ee85bb2 39af033b 21f8f84b 9da4521e 311d54ad 51fd8cf8 4c952cd2 128e80d9 33215c71 0ab75140 f7306c5b 0585f4fa 50480223 a2a496f5 9b4a9a23 4d1e139a 80425fa6 a143ddbf 534ed1a6 e4e136cf e3fe75a6 c01eb5f1 d9e7fb21
+49db1971
+353b1443
+9d263a10
+92bd91c0
+94738f95
+ad08955a
+e6aacf44
+45ddb7e8
+edfa0cb9
+1bf73553
+d18ebe52
+be672eb0
+c79a03a0
+5e6b79ab
+700dca8c
+9cf37963
+cc840241
+f0da2f85
+b36349ab
+3fa15b0b
+53749e52
+5ea4080e
+9d263a10
+92bd91c0
+94738f95
+ad08955a
+f365ecff
+b6f4cd91
+f7b1a89b
+d1df9992
+c0fde1fd
+8d2d205f
+ec9f38f2
+f997c585
+a1209b22
+e828037e
+5d196364
+edef17a7
+408e235f
+46c1892f
+7ad03f99
+f2625fb8
+a8762e33
+d30e580c
+370fe204
+ed6365be
+7f4c21ed
+961126fd
+8f3eba1d
+0d159cf6
+4b249f01
+32cd4bcf
+27fa86e3
+7675eb5c
+d2c2544f
+1c4f2ff1
+16cf33e3
+dda59b6a
+94cc5c8e
+4fa1925d
+3c4c95dd
+2da6d516
+nasko@midian:~/git/github/xtea$ ./xtea_decode 7ff23365 f4d410f9 12f85146 fb0a559e < out
 -------- DECODE BEGIN stderr --------
-проф. дохтор Чавдарова, дърта курва от СУ; доц. дохтор Биров, СУ, вече пукнал; циганин-манаф Познаков, обикновен педераст
+проф. дохтор Чавдарлийска, дърта курва от ЦУ; доц. дохтор Бирен, СУ, вече пукнал; мангал-манаф (по библейски) Познатов, обикновен педераст
+
 -------- NEW LINE stderr --------
 -------- DECODE END stderr --------
-nasko@midian:~/var/git/xtea$ 
+nasko@midian:~/git/github/xtea$ 
